@@ -1,0 +1,22 @@
+{
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    ["namespace", {
+      "disableSync": false,
+      "sources": [
+        "src"
+      ],
+      "excludes": [
+        "node_modules"
+      ],
+      "namespaces": {
+        "controllers": "src/controllers",
+        "middlewares": "src/middlewares",
+        "router": "src/router",
+        "utils": "src/utils",
+        "constants": "src/constants"
+      }
+    }]
+  ]
+}
+

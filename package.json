@@ -1,0 +1,38 @@
+{
+  "name": "node-es6-blockchain",
+  "version": "0.0.1",
+  "description": "A Node JS example of a minimal functional Blockchain, to train and understand it's principes. Made in ES6 syntax.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "inspect": "npm run build && node --inspect ./build/app.js",
+    "dev": "nodemon --exec npm run start --watch ./src",
+    "format": "prettier --write \"src/**/*.{js,jsx, json}\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,jsx, json}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\""
+  },
+  "author": "Peregg",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-plugin-namespace": "^0.2.2",
+    "crypto-js": "^3.1.9-1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "express": "^4.17.1",
+    "nodemon": "^1.18.11",
+    "prettier": "^1.17.0",
+    "ws": "^7.1.2"
+  },
+  "dependencies": {
+    "elliptic": "^6.5.2",
+    "lodash": "^4.17.15"
+  }
+}
