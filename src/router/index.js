@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { generateNextBlock, getBlockchain, connectNode, postTransaction, getWallet } from 'middlewares/responseMiddleware';
+import { generateNextBlock, getBlockchain } from 'controllers/blockchain';
+import { connectNode } from 'controllers/p2p';
+import { postTransaction } from 'controllers/transactions';
+import { getWallet } from 'controllers/wallet';
 
 const router = Router();
 

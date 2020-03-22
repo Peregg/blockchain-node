@@ -1,22 +1,13 @@
-import { genKeyPair } from 'utils/crypto';
+import { success } from 'middlewares/response';
 
-export default class Wallet {
-  constructor(secret) {
-    this.balance = 10;
-    this.keyPair = genKeyPair(secret);
-    this.publicKey = this.keyPair.getPublic('hex');
-  }
+export const getWallet = (req, res) => {
+  const {
+    infrastructure: {
+      wallet,
+    },
+  } = req.app.locals;
 
-  getInfo() {
-    return {
-      balance: this.balance,
-      publicKey: this.publicKey,
-    };
-  }
+  const walletInfo = wallet.getInfo()
 
-  updateBalance(sumOfCoinMovements) {
-    console.log(this.balance, this.publicKey, sumOfCoinMovements, sumOfCoinMovements[this.publicKey]);
-
-    this.balance = this.balance + sumOfCoinMovements[this.publicKey];
-  }
+  success(res)({ yourWallet: walletInfo });
 }

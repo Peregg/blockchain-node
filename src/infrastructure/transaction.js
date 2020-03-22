@@ -18,6 +18,7 @@ export default class Transaction {
 
   static create(senderWallet, amount, to, type, blockchain) {
     const transaction = new this();
+
     const sumOfTotalDebits = blockchain.transactionPool
     .map(({ outputs }) => (outputs))
     .flat()
@@ -27,6 +28,7 @@ export default class Transaction {
       }
       return acc;
     }, 0);
+
     const toSend = {
       to,
       amount,
@@ -35,6 +37,7 @@ export default class Transaction {
       to: senderWallet.publicKey,
       amount: senderWallet.balance - sumOfTotalDebits - amount,
     };
+
     const outputs = [toSend, toKeep];
     transaction.outputs = outputs;
     transaction.type = type;
@@ -42,7 +45,9 @@ export default class Transaction {
       timestamp: Date.now(),
       from: senderWallet.publicKey,
     };
+
     transaction.hash = hashTxData(transaction);
+
     return transaction;
   }
 };

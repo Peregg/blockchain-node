@@ -18,10 +18,6 @@ export default class Block {
   }
 }
 
-// export const hashBlock = ({ index, previousHash, timestamp, data, nonce, difficulty}) => {
-//   return calculateBlockHash(index, previousHash, timestamp, data, nonce, difficulty);
-//   }
-
 const genesisBlockDate = new Date().getTime();
 
 export const genesisBlock = new Block(0, '4772f1c5556e36ab6cb23075be1842a3c6178b751df8f58d8074094491e6bad0', genesisBlockDate , null, 'GENESIS-BLOCK', 0, 0);
